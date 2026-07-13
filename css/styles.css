@@ -46,16 +46,59 @@ body {
   line-height: 1.45;
 }
 
-body::before {
+body::before,
+body::after {
   position: fixed;
   inset: 0;
   z-index: 999;
   pointer-events: none;
   content: "";
-  background: url("../assets/textures/xerox-noise.svg") repeat;
-  background-size: 180px 180px;
-  opacity: 0.045;
+}
+
+body::before {
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    radial-gradient(
+      circle at 18% 27%,
+      rgb(255 255 255 / 8%) 0 1px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 74% 61%,
+      rgb(255 255 255 / 5%) 0 1px,
+      transparent 1.8px
+    );
+  background-size:
+    145px 145px,
+    23px 23px,
+    31px 31px;
+  opacity: 0.07;
   mix-blend-mode: screen;
+}
+
+body::after {
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgb(0 0 0 / 42%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 67% 43%,
+      rgb(0 0 0 / 34%) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 84% 76%,
+      rgb(0 0 0 / 28%) 0 1px,
+      transparent 1.7px
+    );
+  background-size:
+    29px 29px,
+    37px 37px,
+    43px 43px;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
 }
 
 body.menu-open {
@@ -165,7 +208,6 @@ p {
   opacity: 0.45;
 }
 
-.music::before,
 .band::before,
 .videos::before,
 .gallery::before,
@@ -539,13 +581,13 @@ p {
 
 .hero {
   position: relative;
-  min-height: 555px;
+  min-height: clamp(720px, 88svh, 900px);
   display: flex;
   align-items: center;
   padding:
-    calc(var(--header-height) + 38px)
+    calc(var(--header-height) + 56px)
     0
-    54px;
+    80px;
   overflow: hidden;
   isolation: isolate;
   background: var(--black);
@@ -563,7 +605,7 @@ p {
 .hero__image {
   z-index: -4;
   object-fit: cover;
-  object-position: 63% 47%;
+  object-position: 63% 45%;
   filter:
     contrast(1.16)
     saturate(0.86)
@@ -576,27 +618,25 @@ p {
     linear-gradient(
       90deg,
       rgb(2 2 2 / 98%) 0%,
-      rgb(2 2 2 / 90%) 20%,
-      rgb(2 2 2 / 61%) 38%,
-      rgb(2 2 2 / 22%) 61%,
-      rgb(2 2 2 / 10%) 79%,
+      rgb(2 2 2 / 90%) 18%,
+      rgb(2 2 2 / 62%) 36%,
+      rgb(2 2 2 / 24%) 58%,
+      rgb(2 2 2 / 10%) 78%,
       rgb(2 2 2 / 24%) 100%
     ),
     linear-gradient(
       180deg,
-      rgb(0 0 0 / 56%) 0%,
-      transparent 28%,
-      transparent 72%,
-      rgb(0 0 0 / 67%) 100%
+      rgb(0 0 0 / 58%) 0%,
+      transparent 24%,
+      transparent 74%,
+      rgb(0 0 0 / 70%) 100%
     );
 }
 
 .hero__grain {
   z-index: -2;
   pointer-events: none;
-  background:
-    url("../assets/textures/xerox-noise.svg")
-    repeat;
+  background: url("../assets/textures/xerox-noise.svg") repeat;
   background-size: 180px 180px;
   opacity: 0.05;
   mix-blend-mode: screen;
@@ -609,13 +649,13 @@ p {
 
 .hero__title {
   width: fit-content;
-  max-width: 440px;
+  max-width: 470px;
   margin: 0;
   color: var(--paper);
   font-family: var(--font-display);
-  font-size: clamp(3.4rem, 4.45vw, 4.65rem);
+  font-size: clamp(4rem, 5vw, 5.3rem);
   font-weight: 400;
-  line-height: 0.87;
+  line-height: 0.88;
   letter-spacing: 0.008em;
   text-transform: uppercase;
   text-shadow: 3px 3px 0 rgb(0 0 0 / 56%);
@@ -630,8 +670,29 @@ p {
 .hero__highlight {
   position: relative;
   z-index: 1;
-  margin-top: 0.07em;
-  padding: 0.02em 0.12em 0.075em;
+  margin-top: 0.08em;
+  padding: 0.02em 0.13em 0.08em;
+  color: transparent;
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      180deg,
+      #f7f3ec 0%,
+      #eee9df 48%,
+      #c9c1b4 100%
+    );
+  background-size:
+    88px 88px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    normal;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter:
+    contrast(1.3)
+    drop-shadow(2px 2px 0 rgb(72 5 7 / 58%));
   transform: rotate(-1deg);
 }
 
@@ -641,33 +702,157 @@ p {
   z-index: -1;
   content: "";
   background:
-    url("../assets/textures/xerox-noise.svg"),
-    var(--red);
-  background-size: 120px, auto;
-  background-blend-mode: multiply;
+    radial-gradient(
+      circle at 8% 28%,
+      rgb(45 0 0 / 38%) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 34% 71%,
+      rgb(255 230 220 / 17%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 68% 36%,
+      rgb(60 0 0 / 32%) 0 1px,
+      transparent 2.2px
+    ),
+    radial-gradient(
+      circle at 87% 64%,
+      rgb(255 230 220 / 14%) 0 1px,
+      transparent 1.8px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      92deg,
+      #a51f22 0%,
+      #e73233 44%,
+      #c32629 100%
+    );
+  background-size:
+    17px 19px,
+    23px 21px,
+    27px 24px,
+    21px 18px,
+    102px 102px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    screen,
+    multiply,
+    screen,
+    multiply,
+    normal;
   clip-path: polygon(
-    1% 7%,
+    1% 9%,
+    7% 4%,
+    19% 7%,
+    32% 2%,
+    47% 6%,
+    61% 1%,
+    77% 5%,
     97% 0,
-    100% 84%,
-    94% 96%,
-    4% 100%,
+    100% 82%,
+    94% 94%,
+    81% 91%,
+    68% 97%,
+    52% 93%,
+    36% 100%,
+    20% 95%,
+    4% 99%,
     0 82%
   );
+  box-shadow:
+    0 2px 0 rgb(70 0 0 / 24%),
+    0 7px 10px rgb(0 0 0 / 30%);
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
-  margin-top: 26px;
+  margin-top: 30px;
+}
+
+.hero__actions .button {
+  min-height: 50px;
+  padding: 0.78rem 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 0;
+  font-size: 1rem;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.hero__actions .button--primary {
+  color: var(--paper);
+  background:
+    radial-gradient(
+      circle at 18% 34%,
+      rgb(255 235 225 / 14%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 76% 62%,
+      rgb(70 0 0 / 27%) 0 1px,
+      transparent 2px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      94deg,
+      var(--red-dark) 0%,
+      var(--red) 48%,
+      #c4272a 100%
+    );
+  background-size:
+    19px 19px,
+    27px 27px,
+    92px 92px,
+    100% 100%;
+  background-blend-mode:
+    screen,
+    multiply,
+    multiply,
+    normal;
+  border-color: var(--red-dark);
+}
+
+.hero__actions .button--ghost {
+  color: var(--paper);
+  background:
+    radial-gradient(
+      circle at 22% 38%,
+      rgb(255 255 255 / 10%) 0 1px,
+      transparent 1.7px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    rgb(5 5 5 / 72%);
+  background-size:
+    23px 23px,
+    92px 92px,
+    auto;
+  background-blend-mode:
+    screen,
+    screen,
+    normal;
+  border-color: rgb(238 233 223 / 72%);
+}
+
+.hero__actions .button:hover,
+.hero__actions .button:focus-visible {
+  transform: translate(-2px, -2px);
 }
 
 .hero__symbol {
   position: absolute;
   right: clamp(28px, 5vw, 72px);
-  bottom: 30px;
+  bottom: 42px;
   z-index: 2;
-  width: 68px;
+  width: 78px;
   opacity: 0.74;
   transform: rotate(-8deg);
 }
@@ -700,6 +885,107 @@ p {
   color: var(--red);
 }
 
+/* ==================================================
+   TINTA DESGASTADA / EFECTO XEROX
+================================================== */
+
+.hero__line:not(.hero__highlight),
+.section-dark .section-title h2,
+.video-sidebar h4,
+.footer__slogan strong {
+  color: transparent;
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      180deg,
+      #f7f3ec 0%,
+      #eee9df 48%,
+      #c9c1b4 100%
+    );
+  background-size:
+    96px 96px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    normal;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter:
+    contrast(1.24)
+    drop-shadow(2px 2px 0 rgb(0 0 0 / 42%));
+}
+
+.section-dark .section-title h2 span {
+  color: transparent;
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      180deg,
+      #f34a4b 0%,
+      var(--red) 48%,
+      #9d2023 100%
+    );
+  background-size:
+    82px 82px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    normal;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter:
+    contrast(1.3)
+    drop-shadow(1px 1px 0 rgb(0 0 0 / 32%));
+}
+
+.release .section-title h2,
+.release__copy h3 {
+  color: transparent;
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      180deg,
+      #050505 0%,
+      #242424 50%,
+      #070707 100%
+    );
+  background-size:
+    88px 88px,
+    100% 100%;
+  background-blend-mode:
+    screen,
+    normal;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter:
+    contrast(1.36)
+    drop-shadow(1px 1px 0 rgb(165 34 38 / 20%));
+}
+
+.nav-link,
+.button,
+.platform,
+.social-card,
+.member h3,
+.member p,
+.video-sidebar h3,
+.video-thumb,
+.eyebrow {
+  text-shadow:
+    0.65px 0 rgb(255 255 255 / 15%),
+    -0.65px 0 rgb(0 0 0 / 44%),
+    0 1px 0 rgb(0 0 0 / 28%);
+}
+
+.member h3,
+.video-sidebar h3,
+.eyebrow {
+  filter: contrast(1.12);
+}
+
 .section-title h2::after {
   position: absolute;
   bottom: -7px;
@@ -707,7 +993,20 @@ p {
   width: 72%;
   height: 6px;
   content: "";
-  background: var(--red);
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      90deg,
+      var(--red-dark),
+      var(--red),
+      #bd2528
+    );
+  background-size:
+    72px 72px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    normal;
   clip-path: polygon(
     0 35%,
     17% 18%,
@@ -799,25 +1098,83 @@ h4,
 }
 
 .button--primary {
-  background: var(--red);
+  background:
+    radial-gradient(
+      circle at 18% 34%,
+      rgb(255 235 225 / 14%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 76% 62%,
+      rgb(70 0 0 / 27%) 0 1px,
+      transparent 2px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      94deg,
+      var(--red-dark) 0%,
+      var(--red) 48%,
+      #c4272a 100%
+    );
+  background-size:
+    19px 19px,
+    27px 27px,
+    92px 92px,
+    100% 100%;
+  background-blend-mode:
+    screen,
+    multiply,
+    multiply,
+    normal;
   border-color: var(--red-dark);
 }
 
 .button--ghost,
 .button--outline {
-  background: rgb(8 8 8 / 76%);
+  background:
+    radial-gradient(
+      circle at 22% 38%,
+      rgb(255 255 255 / 10%) 0 1px,
+      transparent 1.7px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    rgb(8 8 8 / 82%);
+  background-size:
+    23px 23px,
+    92px 92px,
+    auto;
+  background-blend-mode:
+    screen,
+    screen,
+    normal;
   border-color: var(--paper);
 }
 
 .release .button--outline {
   color: var(--black);
-  background: transparent;
+  background:
+    radial-gradient(
+      circle at 22% 38%,
+      rgb(0 0 0 / 13%) 0 1px,
+      transparent 1.7px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    transparent;
+  background-size:
+    23px 23px,
+    92px 92px,
+    auto;
+  background-blend-mode:
+    multiply,
+    multiply,
+    normal;
   border-color: var(--black);
 }
 
 .button__icon {
   width: 21px;
   height: 21px;
+  flex: 0 0 21px;
 }
 
 .button__icon circle {
@@ -836,14 +1193,17 @@ h4,
   position: relative;
   width: 22px;
   height: 22px;
+  flex: 0 0 22px;
+  display: inline-grid;
+  place-items: center;
   border: 2px solid currentColor;
   border-radius: 50%;
 }
 
 .button__play::after {
-  position: absolute;
-  top: 5px;
-  left: 8px;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
   content: "";
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
@@ -855,7 +1215,131 @@ h4,
 ================================================== */
 
 .music {
-  padding: 58px 0 74px;
+  position: relative;
+  padding: 78px 0 74px;
+}
+
+.music::before {
+  position: absolute;
+  top: -32px;
+  left: 0;
+  z-index: 8;
+  width: 100%;
+  height: 54px;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(
+      circle at 8% 42%,
+      rgb(255 255 255 / 28%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 29% 58%,
+      rgb(0 0 0 / 10%) 0 1px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 53% 38%,
+      rgb(255 255 255 / 20%) 0 1px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 78% 55%,
+      rgb(0 0 0 / 9%) 0 1px,
+      transparent 1.8px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      180deg,
+      #f4f0e8 0%,
+      var(--paper) 48%,
+      var(--paper-dark) 100%
+    );
+  background-size:
+    27px 19px,
+    31px 23px,
+    34px 21px,
+    29px 20px,
+    170px 170px,
+    100% 100%;
+  clip-path: polygon(
+    0 34%,
+    1.5% 27%,
+    3.2% 38%,
+    5.1% 24%,
+    7.4% 35%,
+    9.6% 30%,
+    12.2% 42%,
+    14.8% 26%,
+    17.1% 36%,
+    19.9% 23%,
+    22.5% 39%,
+    25.4% 29%,
+    28.2% 43%,
+    31.4% 25%,
+    34.1% 37%,
+    37.3% 28%,
+    40.6% 41%,
+    43.9% 24%,
+    47.2% 35%,
+    50.5% 27%,
+    53.7% 42%,
+    56.8% 25%,
+    60.1% 38%,
+    63.2% 29%,
+    66.5% 43%,
+    69.7% 26%,
+    72.9% 37%,
+    76.1% 24%,
+    79.3% 40%,
+    82.4% 28%,
+    85.6% 42%,
+    88.7% 25%,
+    91.5% 37%,
+    94.1% 29%,
+    96.6% 41%,
+    98.2% 27%,
+    100% 35%,
+    100% 74%,
+    98.1% 68%,
+    96.2% 79%,
+    93.8% 66%,
+    91.1% 76%,
+    88.4% 69%,
+    85.5% 81%,
+    82.2% 67%,
+    79.1% 77%,
+    75.9% 65%,
+    72.7% 80%,
+    69.4% 68%,
+    66.1% 77%,
+    62.8% 64%,
+    59.4% 79%,
+    56.1% 67%,
+    52.8% 76%,
+    49.4% 65%,
+    46.1% 80%,
+    42.8% 68%,
+    39.4% 77%,
+    36.1% 64%,
+    32.8% 79%,
+    29.5% 67%,
+    26.2% 76%,
+    22.9% 65%,
+    19.6% 80%,
+    16.4% 68%,
+    13.2% 77%,
+    10% 65%,
+    7.1% 79%,
+    4.5% 68%,
+    2.1% 76%,
+    0 70%
+  );
+  opacity: 0.98;
+  filter:
+    drop-shadow(0 -3px 2px rgb(0 0 0 / 34%))
+    drop-shadow(0 4px 2px rgb(0 0 0 / 46%));
 }
 
 .music__grid {
@@ -916,7 +1400,22 @@ h4,
   min-height: 44px;
   justify-content: flex-start;
   padding: 8px 14px;
-  background: #080808;
+  background:
+    radial-gradient(
+      circle at 20% 35%,
+      rgb(255 255 255 / 8%) 0 1px,
+      transparent 1.7px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    #080808;
+  background-size:
+    23px 23px,
+    96px 96px,
+    auto;
+  background-blend-mode:
+    screen,
+    screen,
+    normal;
   border-color: var(--border);
   box-shadow: none;
 }
@@ -1017,9 +1516,7 @@ h4,
   inset: 0;
   pointer-events: none;
   content: "";
-  background:
-    url("../assets/textures/xerox-noise.svg")
-    repeat;
+  background: url("../assets/textures/xerox-noise.svg") repeat;
   background-size: 120px 120px;
   opacity: 0.09;
   mix-blend-mode: multiply;
@@ -1152,7 +1649,15 @@ h4,
 .polaroid {
   padding: 9px 9px 12px;
   color: var(--black);
-  background: var(--paper);
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    var(--paper);
+  background-size:
+    120px 120px,
+    auto;
+  background-blend-mode:
+    multiply,
+    normal;
   border: 1px solid rgb(8 8 8 / 28%);
   text-align: center;
   box-shadow: 4px 5px 0 rgb(0 0 0 / 34%);
@@ -1401,7 +1906,15 @@ h4,
   min-width: 0;
   padding: 5px;
   color: var(--paper);
-  background: var(--black-soft);
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    var(--black-soft);
+  background-size:
+    100px 100px,
+    auto;
+  background-blend-mode:
+    screen,
+    normal;
   border: 2px solid rgb(238 233 223 / 58%);
   cursor: pointer;
   font-family: var(--font-condensed);
@@ -1582,23 +2095,78 @@ h4,
 }
 
 .social-card--instagram {
-  background: #9f2347;
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      105deg,
+      #76203a,
+      #a52a52 56%,
+      #6d1932
+    );
+  background-size:
+    95px 95px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    normal;
 }
 
 .social-card--youtube {
-  background: var(--red-dark);
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      96deg,
+      #7f171a,
+      var(--red-dark) 48%,
+      #d32c2f
+    );
+  background-size:
+    95px 95px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    normal;
 }
 
 .social-card--tiktok {
-  background: #090909;
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    #090909;
+  background-size:
+    95px 95px,
+    auto;
+  background-blend-mode:
+    screen,
+    normal;
 }
 
 .social-card--spotify {
-  background: #0b0b0b;
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    #0b0b0b;
+  background-size:
+    95px 95px,
+    auto;
+  background-blend-mode:
+    screen,
+    normal;
 }
 
 .social-card--facebook {
-  background: var(--blue);
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      104deg,
+      #15313e,
+      var(--blue) 54%,
+      #132c37
+    );
+  background-size:
+    95px 95px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    normal;
 }
 
 .social-card--instagram svg * {
@@ -1613,122 +2181,69 @@ h4,
 }
 
 /* ==================================================
-   CONTACTO
+   CONTACTO SIN FORMULARIO
 ================================================== */
 
 .contact {
-  padding: 50px 0 56px;
+  padding: 54px 0 60px;
 }
 
 .contact__grid {
   display: grid;
   grid-template-columns:
-    220px
-    minmax(0, 1fr)
-    260px;
-  gap: 38px;
-  align-items: start;
+    minmax(260px, 0.8fr)
+    minmax(320px, 1.2fr);
+  gap: clamp(40px, 7vw, 100px);
+  align-items: center;
+}
+
+.contact__info {
+  max-width: 430px;
 }
 
 .contact__info ul {
   display: grid;
-  gap: 11px;
+  gap: 14px;
   padding: 0;
   margin: 0;
   list-style: none;
-  font-size: 0.89rem;
+  font-size: 0.94rem;
 }
 
 .contact__info li {
   display: grid;
-  grid-template-columns: 22px minmax(0, 1fr);
-  gap: 8px;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 10px;
   align-items: center;
+}
+
+.contact__info a {
+  transition: color var(--fast);
+}
+
+.contact__info a:hover,
+.contact__info a:focus-visible {
+  color: var(--red);
 }
 
 .contact__icon {
   display: inline-grid;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   place-items: center;
-  color: var(--paper);
+  color: var(--red);
   font-family: var(--font-condensed);
-  font-size: 1.1rem;
-}
-
-.contact-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 12px;
-}
-
-.form-row {
-  display: grid;
-  gap: 3px;
-}
-
-.form-row--full {
-  grid-column: 1 / -1;
-}
-
-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  min-height: 38px;
-  padding: 7px 10px;
-  color: var(--paper);
-  background: #070707;
-  border: 1px solid rgb(238 233 223 / 60%);
-  border-radius: 0;
-  box-shadow: inset 2px 2px 0 rgb(255 255 255 / 3%);
-}
-
-textarea {
-  height: 92px;
-  min-height: 92px;
-  resize: vertical;
-}
-
-.form-error {
-  margin: 0;
-  color: #ffb3b3;
-  font-size: 0.76rem;
-}
-
-.form-error:empty,
-.form-status:empty {
-  display: none;
-}
-
-.form-status {
-  margin: 0;
-  font-size: 0.84rem;
-  font-weight: 600;
-}
-
-.contact-form .button {
-  width: min(100%, 290px);
-  min-height: 38px;
-  justify-self: center;
+  font-size: 1.15rem;
 }
 
 .contact__photo {
-  width: 260px;
-  height: 170px;
+  width: min(100%, 440px);
+  height: 260px;
+  justify-self: end;
   object-fit: cover;
   object-position: 50% 52%;
-  border: 6px solid var(--paper);
-  box-shadow: 5px 6px 0 rgb(0 0 0 / 34%);
+  border: 7px solid var(--paper);
+  box-shadow: 6px 7px 0 rgb(0 0 0 / 34%);
   filter:
     contrast(1.12)
     saturate(0.92);
@@ -1793,7 +2308,15 @@ textarea {
   width: 100%;
   height: 4px;
   content: "";
-  background: var(--red);
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    var(--red);
+  background-size:
+    72px 72px,
+    auto;
+  background-blend-mode:
+    multiply,
+    normal;
   clip-path: polygon(
     0 35%,
     100% 0,
@@ -1926,14 +2449,13 @@ textarea {
 
   .contact__grid {
     grid-template-columns:
-      210px
-      minmax(0, 1fr)
-      230px;
-    gap: 28px;
+      minmax(240px, 0.8fr)
+      minmax(300px, 1.2fr);
+    gap: 42px;
   }
 
   .contact__photo {
-    width: 230px;
+    width: min(100%, 390px);
   }
 }
 
@@ -2000,18 +2522,30 @@ textarea {
   }
 
   .hero {
-    min-height: 600px;
+    min-height: clamp(680px, 86svh, 820px);
+    padding:
+      calc(var(--header-height) + 46px)
+      0
+      70px;
+  }
+
+  .hero__image {
+    object-position: 61% 46%;
   }
 
   .hero__title {
-    font-size: clamp(3.2rem, 7vw, 4.25rem);
+    max-width: 440px;
+    font-size: clamp(3.5rem, 7.2vw, 4.6rem);
+  }
+
+  .hero__symbol {
+    bottom: 30px;
+    width: 64px;
   }
 
   .music__grid,
-  .release__grid,
   .band__grid,
-  .videos__grid,
-  .contact__grid {
+  .videos__grid {
     grid-template-columns: 1fr;
   }
 
@@ -2080,16 +2614,14 @@ textarea {
 
   .contact__grid {
     grid-template-columns:
-      minmax(0, 1fr)
-      240px;
-  }
-
-  .contact__info {
-    grid-column: 1 / -1;
+      minmax(220px, 0.8fr)
+      minmax(280px, 1.2fr);
+    gap: 34px;
   }
 
   .contact__photo {
-    width: 240px;
+    width: min(100%, 340px);
+    height: 220px;
   }
 
   .footer__inner {
@@ -2115,12 +2647,12 @@ textarea {
   }
 
   .hero {
-    min-height: 640px;
+    min-height: clamp(680px, 92svh, 840px);
     align-items: flex-end;
     padding:
-      calc(var(--header-height) + 34px)
+      calc(var(--header-height) + 40px)
       0
-      56px;
+      64px;
   }
 
   .hero__image {
@@ -2141,14 +2673,14 @@ textarea {
 
   .hero__title {
     max-width: 100%;
-    font-size: clamp(2.75rem, 12.4vw, 3.8rem);
+    font-size: clamp(2.9rem, 12vw, 4rem);
   }
 
   .hero__actions {
     display: grid;
-    width: min(100%, 290px);
-    gap: 10px;
-    margin-top: 22px;
+    width: min(100%, 300px);
+    gap: 11px;
+    margin-top: 24px;
   }
 
   .hero__actions .button {
@@ -2157,8 +2689,8 @@ textarea {
 
   .hero__symbol {
     right: 18px;
-    bottom: 20px;
-    width: 48px;
+    bottom: 22px;
+    width: 52px;
   }
 
   .section-title h2 {
@@ -2180,6 +2712,15 @@ textarea {
   .contact {
     padding-top: 52px;
     padding-bottom: 56px;
+  }
+
+  .music {
+    padding-top: 68px;
+  }
+
+  .music::before {
+    top: -25px;
+    height: 44px;
   }
 
   .music__links {
@@ -2263,18 +2804,16 @@ textarea {
 
   .contact__grid {
     grid-template-columns: 1fr;
+    gap: 34px;
   }
 
-  .contact-form {
-    grid-template-columns: 1fr;
-  }
-
-  .form-row--full {
-    grid-column: auto;
+  .contact__info {
+    max-width: none;
   }
 
   .contact__photo {
-    width: min(100%, 300px);
+    width: min(100%, 360px);
+    height: 220px;
     justify-self: center;
   }
 
@@ -2296,15 +2835,26 @@ textarea {
 
 @media (max-width: 420px) {
   .hero {
-    min-height: 600px;
+    min-height: clamp(620px, 90svh, 740px);
+    padding-bottom: 56px;
   }
 
   .hero__title {
-    font-size: clamp(2.45rem, 12.7vw, 3.2rem);
+    font-size: clamp(2.5rem, 12.7vw, 3.25rem);
+    line-height: 0.9;
   }
 
   .hero__symbol {
     display: none;
+  }
+
+  .music {
+    padding-top: 62px;
+  }
+
+  .music::before {
+    top: -21px;
+    height: 38px;
   }
 
   .members {
@@ -2335,6 +2885,10 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .contact__photo {
+    height: 200px;
+  }
+
   .lightbox {
     grid-template-columns:
       42px
@@ -2343,6 +2897,26 @@ textarea {
     padding: 8px;
   }
 }
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    min-height: 600px;
+    padding-top: calc(var(--header-height) + 34px);
+    padding-bottom: 48px;
+  }
+
+  .hero__title {
+    font-size: clamp(3rem, 7vw, 4.2rem);
+  }
+
+  .hero__actions {
+    margin-top: 20px;
+  }
+}
+
+/* ==================================================
+   MOVIMIENTO REDUCIDO
+================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -2357,5 +2931,398 @@ textarea {
   .js .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ==================================================
+   CORRECCIÓN: TIPOGRAFÍA ORIGINAL + SUCIEDAD PUNK
+   Pegar al FINAL de styles.css
+================================================== */
+
+/*
+  RESTAURA LA TIPOGRAFÍA ORIGINAL.
+  No se usa background-clip en el texto.
+*/
+
+.hero__line:not(.hero__highlight) {
+  color: var(--paper);
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: var(--paper);
+  filter: none;
+}
+
+.hero__highlight {
+  color: var(--paper);
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: var(--paper);
+  filter: none;
+  text-shadow:
+    2px 2px 0 rgb(80 0 0 / 48%),
+    0 1px 0 rgb(0 0 0 / 38%);
+}
+
+.section-dark .section-title h2 {
+  color: var(--paper);
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: var(--paper);
+  filter: none;
+}
+
+.section-dark .section-title h2 span {
+  color: var(--red);
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: var(--red);
+  filter: none;
+}
+
+.release .section-title h2,
+.release__copy h3 {
+  color: var(--black);
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: var(--black);
+  filter: none;
+}
+
+.video-sidebar h4,
+.footer__slogan strong {
+  color: var(--paper);
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: var(--paper);
+  filter: none;
+}
+
+/* Mantiene exactamente las fuentes originales. */
+
+.hero__title,
+.hero__line,
+.hero__highlight,
+.section-title h2,
+.release__copy h3 {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-stretch: normal;
+}
+
+/* ==================================================
+   SUCIEDAD SOBRE EL HERO
+   La textura se coloca ENCIMA del texto, no dentro
+   del relleno de la fuente.
+================================================== */
+
+.hero__title {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero__title::after {
+  position: absolute;
+  inset: -5px -8px;
+  z-index: 4;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(
+      circle at 8% 18%,
+      rgb(0 0 0 / 72%) 0 0.8px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 23% 71%,
+      rgb(0 0 0 / 58%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 47% 32%,
+      rgb(0 0 0 / 62%) 0 0.9px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 68% 82%,
+      rgb(0 0 0 / 55%) 0 1px,
+      transparent 1.9px
+    ),
+    radial-gradient(
+      circle at 88% 41%,
+      rgb(0 0 0 / 68%) 0 0.8px,
+      transparent 1.6px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat;
+  background-size:
+    17px 19px,
+    23px 21px,
+    29px 25px,
+    21px 24px,
+    27px 22px,
+    105px 105px;
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+}
+
+/*
+  La capa está sobre el título completo.
+  En las zonas negras casi no se nota;
+  sobre las letras blancas y la franja roja
+  crea desgaste y puntos oscuros.
+*/
+
+.hero__line,
+.hero__highlight {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==================================================
+   FRANJA ROJA DESGASTADA
+================================================== */
+
+.hero__highlight::before {
+  position: absolute;
+  inset: 5% -3% 1%;
+  z-index: -1;
+  content: "";
+  background:
+    radial-gradient(
+      circle at 7% 24%,
+      rgb(70 0 0 / 36%) 0 1px,
+      transparent 1.9px
+    ),
+    radial-gradient(
+      circle at 28% 68%,
+      rgb(95 0 0 / 28%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 54% 31%,
+      rgb(255 225 210 / 11%) 0 0.9px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 79% 72%,
+      rgb(65 0 0 / 33%) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 93% 38%,
+      rgb(255 225 210 / 10%) 0 0.8px,
+      transparent 1.6px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      94deg,
+      #a91f22 0%,
+      var(--red) 43%,
+      #ca292c 76%,
+      #a81f22 100%
+    );
+  background-size:
+    17px 19px,
+    24px 22px,
+    29px 26px,
+    21px 23px,
+    27px 21px,
+    105px 105px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    multiply,
+    screen,
+    multiply,
+    screen,
+    multiply,
+    normal;
+  clip-path: polygon(
+    1% 9%,
+    7% 4%,
+    19% 7%,
+    32% 2%,
+    47% 6%,
+    61% 1%,
+    77% 5%,
+    97% 0,
+    100% 82%,
+    94% 94%,
+    81% 91%,
+    68% 97%,
+    52% 93%,
+    36% 100%,
+    20% 95%,
+    4% 99%,
+    0 82%
+  );
+  box-shadow:
+    0 2px 0 rgb(70 0 0 / 24%),
+    0 7px 10px rgb(0 0 0 / 30%);
+}
+
+/* ==================================================
+   SUCIEDAD EN LOS DEMÁS TÍTULOS
+================================================== */
+
+.section-title {
+  isolation: isolate;
+}
+
+.section-title::before {
+  position: absolute;
+  inset: -5px -7px;
+  z-index: 3;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(
+      circle at 12% 31%,
+      rgb(0 0 0 / 64%) 0 0.8px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 44% 72%,
+      rgb(0 0 0 / 48%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 76% 27%,
+      rgb(0 0 0 / 58%) 0 0.9px,
+      transparent 1.7px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat;
+  background-size:
+    21px 20px,
+    27px 24px,
+    31px 27px,
+    110px 110px;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+}
+
+.section-title h2 {
+  position: relative;
+  z-index: 2;
+}
+
+/* Menor intensidad en la sección clara. */
+
+.release .section-title::before {
+  opacity: 0.12;
+}
+
+/* ==================================================
+   SUCIEDAD SUAVE EN NOMBRE DEL LANZAMIENTO
+================================================== */
+
+.release__copy h3 {
+  position: relative;
+  isolation: isolate;
+}
+
+.release__copy h3::after {
+  position: absolute;
+  inset: -4px;
+  z-index: 2;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(
+      circle at 16% 28%,
+      rgb(238 233 223 / 58%) 0 0.8px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 57% 71%,
+      rgb(238 233 223 / 46%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 86% 34%,
+      rgb(238 233 223 / 52%) 0 0.9px,
+      transparent 1.7px
+    );
+  background-size:
+    21px 20px,
+    27px 24px,
+    31px 27px;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+}
+
+/* ==================================================
+   BOTONES
+   Mantienen la letra blanca original.
+================================================== */
+
+.button,
+.platform,
+.social-card {
+  color: var(--paper);
+  -webkit-text-fill-color: currentColor;
+}
+
+.hero__actions .button--primary {
+  background:
+    radial-gradient(
+      circle at 18% 34%,
+      rgb(95 0 0 / 28%) 0 1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 76% 62%,
+      rgb(255 225 215 / 12%) 0 0.9px,
+      transparent 1.7px
+    ),
+    url("../assets/textures/xerox-noise.svg") repeat,
+    linear-gradient(
+      94deg,
+      var(--red-dark) 0%,
+      var(--red) 48%,
+      #c4272a 100%
+    );
+  background-size:
+    21px 21px,
+    27px 25px,
+    95px 95px,
+    100% 100%;
+  background-blend-mode:
+    multiply,
+    screen,
+    multiply,
+    normal;
+}
+
+/* ==================================================
+   RESPONSIVE DE LA TEXTURA
+================================================== */
+
+@media (max-width: 680px) {
+  .hero__title::after {
+    inset: -4px;
+    background-size:
+      15px 17px,
+      21px 19px,
+      25px 23px,
+      19px 21px,
+      23px 20px,
+      95px 95px;
+    opacity: 0.26;
+  }
+
+  .section-title::before {
+    opacity: 0.18;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero__title::after {
+    opacity: 0.22;
   }
 }
