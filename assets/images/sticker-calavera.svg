@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 330">
+  <path d="M35 42 C82 10 190 6 241 56 C292 105 279 209 227 244 C209 259 206 288 185 303 C160 321 119 318 98 300 C79 284 78 258 58 243 C12 209 -13 86 35 42Z" fill="#eee9df" stroke="#080808" stroke-width="9"/>
+  <path d="M112 21 L135 2 L143 39 L166 3 L168 45 L201 13 L194 56 L236 34 L219 75" fill="none" stroke="#080808" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="104" cy="129" r="28" fill="#080808"/>
+  <circle cx="185" cy="129" r="28" fill="#080808"/>
+  <path d="M145 157 L126 199 L165 198 Z" fill="#080808"/>
+  <path d="M93 226 C119 245 176 246 204 226" fill="none" stroke="#080808" stroke-width="10" stroke-linecap="round"/>
+  <path d="M105 249 L105 281 M132 253 L132 288 M160 253 L160 288 M188 249 L188 281" stroke="#080808" stroke-width="7" stroke-linecap="round"/>
+  <path d="M55 260 L251 238 L266 295 L73 315 Z" fill="#e73233" stroke="#080808" stroke-width="7"/>
+  <text x="93" y="286" fill="#080808" font-family="Impact, sans-serif" font-size="42" transform="rotate(-5 150 275)">LA DOSIS</text>
+</svg>
