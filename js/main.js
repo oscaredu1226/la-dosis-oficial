@@ -235,10 +235,6 @@ const videoFrame = document.querySelector(
   "[data-video-frame]"
 );
 
-const videoPlayer = document.querySelector(
-  "[data-video-player]"
-);
-
 const videoTitle = document.querySelector(
   "[data-video-title]"
 );
@@ -247,28 +243,44 @@ const youtubeLink = document.querySelector(
   "[data-youtube-link]"
 );
 
+const initialVideoFrame = document.querySelector(
+  "[data-video-embed-frame]"
+);
+
 const videoButtons = [
   ...document.querySelectorAll(".video-thumb"),
 ];
 
-const videoPosterImage =
-  videoPlayer?.querySelector("img");
+function withYouTubeOrigin(url) {
+  if (!url) return "";
 
-function playVideo(videoId, title) {
-  if (!videoId) return;
+  try {
+    const embedUrl = new URL(url);
 
-  const watchUrl =
-    `https://www.youtube.com/watch?v=${videoId}`;
+    if (
+      window.location.protocol === "http:" ||
+      window.location.protocol === "https:"
+    ) {
+      embedUrl.searchParams.set(
+        "origin",
+        window.location.origin
+      );
+    }
 
-  if (window.location.protocol === "file:") {
-    window.open(
-      watchUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
-    return;
+    return embedUrl.toString();
+  } catch {
+    return url;
   }
+}
+
+if (initialVideoFrame?.src) {
+  initialVideoFrame.src = withYouTubeOrigin(
+    initialVideoFrame.src
+  );
+}
+
+function renderVideo(videoId, title, autoplay = false, embedUrl = "") {
+  if (!videoId && !embedUrl) return;
 
   if (!videoFrame) return;
 
@@ -277,36 +289,34 @@ function playVideo(videoId, title) {
   iframe.title =
     title || "Video destacado de La Dosis";
 
-  iframe.src =
-    `https://www.youtube-nocookie.com/embed/` +
-    `${videoId}?autoplay=1&rel=0`;
+  const separator = embedUrl.includes("?") ? "&" : "?";
+
+  const src = embedUrl
+    ? `${embedUrl}${autoplay ? `${separator}autoplay=1` : ""}`
+    : `https://www.youtube.com/embed/${videoId}?rel=0${autoplay ? "&autoplay=1" : ""}`;
+
+  iframe.src = withYouTubeOrigin(src);
 
   iframe.allow =
     "accelerometer; autoplay; clipboard-write; " +
     "encrypted-media; gyroscope; picture-in-picture; " +
     "web-share";
 
+  iframe.referrerPolicy = "strict-origin-when-cross-origin";
   iframe.allowFullscreen = true;
 
   videoFrame.replaceChildren(iframe);
 }
 
-videoPlayer?.addEventListener("click", () => {
-  playVideo(
-    videoPlayer.dataset.videoId,
-    videoPlayer.dataset.videoName
-  );
-});
-
 videoButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const videoId = button.dataset.videoId;
+    const videoUrl = button.dataset.videoUrl;
+    const videoEmbed = button.dataset.videoEmbed;
 
     const title =
       button.dataset.videoName ||
       "Video de La Dosis";
-
-    const thumb = button.querySelector("img");
 
     videoButtons.forEach((item) => {
       item.classList.remove("is-active");
@@ -314,31 +324,15 @@ videoButtons.forEach((button) => {
 
     button.classList.add("is-active");
 
-    if (videoFrame && videoPlayer) {
-      videoFrame.replaceChildren(videoPlayer);
-
-      videoPlayer.dataset.videoId =
-        videoId || "";
-
-      videoPlayer.dataset.videoName = title;
-
-      videoPlayer.setAttribute(
-        "aria-label",
-        `Reproducir ${title}`
-      );
-    }
-
-    if (videoPosterImage && thumb) {
-      videoPosterImage.src = thumb.src;
-      videoPosterImage.alt = thumb.alt;
-    }
+    renderVideo(videoId, title, true, videoEmbed);
 
     if (videoTitle) {
       videoTitle.textContent = title;
     }
 
-    if (youtubeLink && videoId) {
+    if (youtubeLink && (videoId || videoUrl)) {
       youtubeLink.href =
+        videoUrl ||
         `https://www.youtube.com/watch?v=${videoId}`;
     }
   });

@@ -2131,6 +2131,35 @@ h4,
   padding: 58px 0 66px;
 }
 
+.videos > .container {
+  position: relative;
+  isolation: isolate;
+}
+
+.videos > .container::after {
+  position: absolute;
+  left: clamp(-16px, -1vw, -6px);
+  bottom: -12px;
+  z-index: -1;
+  width: min(48vw, 520px);
+  height: 120px;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(circle at 12% 66%, rgb(231 50 51 / 22%) 0 1px, transparent 2px),
+    radial-gradient(circle at 36% 42%, rgb(241 238 232 / 8%) 0 1px, transparent 2px),
+    radial-gradient(circle at 68% 72%, rgb(231 50 51 / 17%) 0 1px, transparent 2px),
+    linear-gradient(176deg, transparent 0 44%, rgb(241 238 232 / 8%) 45% 48%, transparent 49%);
+  background-size:
+    21px 23px,
+    29px 31px,
+    18px 20px,
+    100% 24px;
+  opacity: 0.78;
+  mix-blend-mode: screen;
+  clip-path: polygon(0 16%, 98% 0, 100% 70%, 84% 100%, 2% 88%);
+}
+
 .videos::after {
   position: absolute;
   top: 38%;
@@ -2194,6 +2223,19 @@ h4,
   left: -9px;
   background: var(--red);
   transform: rotate(-8deg);
+}
+
+.video-frame::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(circle at 78% 22%, rgb(238 233 223 / 10%) 0 1px, transparent 2px),
+    url("../assets/textures/xerox-noise.svg") repeat;
+  background-size: 23px 23px, 120px 120px;
+  opacity: 0.18;
+  mix-blend-mode: screen;
 }
 
 .video-frame iframe,
@@ -2266,6 +2308,22 @@ h4,
   text-transform: none;
 }
 
+.video-sidebar .eyebrow--red {
+  position: relative;
+  width: fit-content;
+}
+
+.video-sidebar .eyebrow--red::after {
+  position: absolute;
+  top: -9px;
+  right: -24px;
+  color: var(--red);
+  content: "*";
+  font-family: var(--font-marker);
+  font-size: 2rem;
+  transform: rotate(14deg);
+}
+
 .video-sidebar h4 {
   margin: 16px 0 9px;
   font-size: 1.35rem;
@@ -2303,6 +2361,26 @@ h4,
   font-size: 0.83rem;
   font-weight: 700;
   text-align: left;
+  box-shadow: 3px 4px 0 rgb(0 0 0 / 34%);
+  clip-path: polygon(1% 5%, 98% 0, 100% 89%, 92% 100%, 0 94%);
+  transform: rotate(-0.8deg);
+}
+
+.video-thumb:nth-child(even) {
+  transform: rotate(0.9deg);
+}
+
+.video-thumb::after {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  width: 50px;
+  height: 14px;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(90deg, rgb(211 190 148 / 82%), rgb(174 152 112 / 58%));
+  transform: rotate(-5deg);
+  clip-path: polygon(3% 7%, 97% 0, 100% 84%, 91% 100%, 0 92%);
 }
 
 .video-thumb img {
