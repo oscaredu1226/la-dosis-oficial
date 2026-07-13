@@ -228,93 +228,67 @@
            MÚSICA
       ========================== -->
 
-      <section class="music section-dark" id="musica" data-section>
+      <section id="musica" class="music section-dark" data-section>
         <div class="container">
           <div class="section-title section-title--music reveal">
-            <h2>
-              Escucha nuestra <span>música</span>
-            </h2>
+            <h2>Escucha nuestra <span>música</span></h2>
           </div>
 
           <div class="music__grid">
             <div class="spotify-frame reveal">
               <iframe
-                title="Reproductor oficial de Spotify de La Dosis"
                 src="https://open.spotify.com/embed/artist/26XGOxgf1xzkmfcqjEoZNh?utm_source=generator&theme=0"
-                width="100%"
-                height="280"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
               ></iframe>
             </div>
 
-            <aside
-              class="music__links reveal"
-              aria-label="Plataformas musicales"
-            >
+            <div class="music__links reveal">
               <p>
-                Escucha nuestras canciones en Spotify y síguenos para no
-                perderte ningún lanzamiento.
+                Escucha nuestras canciones en Spotify y síguenos para no perderte
+                ningún lanzamiento.
               </p>
 
               <a
+                href="https://open.spotify.com/"
                 class="platform platform--spotify"
-                href="https://open.spotify.com/intl-es/artist/26XGOxgf1xzkmfcqjEoZNh"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9" />
-                  <path
-                    d="M7.6 9.6c3.3-1 6.5-.7 9.4.8M8.2 12.4c2.6-.7 5-.5 7.4.7M8.8 15c1.9-.5 3.8-.3 5.6.5"
-                  />
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M7 10.3c3.3-1 6.8-.7 10 .8"></path>
+                  <path d="M8 13c2.5-.7 5.1-.5 7.4.7"></path>
+                  <path d="M9 15.6c1.8-.4 3.5-.2 5 .5"></path>
                 </svg>
-
-                Ver en Spotify
+                <span>Spotify</span>
               </a>
 
               <a
+                href="https://www.youtube.com/"
                 class="platform platform--youtube"
-                href="https://www.youtube.com/@LADOSISPERU"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path
-                    d="M3.8 7.5c.3-1.5 1.4-2.1 2.8-2.3 3.7-.3 7.1-.3 10.8 0 1.4.2 2.5.8 2.8 2.3.4 2.7.4 6.3 0 9-.3 1.5-1.4 2.1-2.8 2.3-3.7.3-7.1.3-10.8 0-1.4-.2-2.5-.8-2.8-2.3-.4-2.7-.4-6.3 0-9Z"
-                  />
-                  <path d="m10 9 5 3-5 3Z" />
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M23 12s0-3.1-.4-4.5a2.9 2.9 0 0 0-2-2C19.2 5 12 5 12 5s-7.2 0-8.6.5a2.9 2.9 0 0 0-2 2C1 8.9 1 12 1 12s0 3.1.4 4.5a2.9 2.9 0 0 0 2 2C4.8 19 12 19 12 19s7.2 0 8.6-.5a2.9 2.9 0 0 0 2-2C23 15.1 23 12 23 12Z"></path>
+                  <path d="M10 9.2v5.6l5-2.8-5-2.8Z"></path>
                 </svg>
-
-                YouTube Music
+                <span>YouTube</span>
               </a>
 
-              <span
-                class="platform platform--apple is-disabled"
-                aria-disabled="true"
+              <a
+                href="https://www.tiktok.com/"
+                class="platform platform--tiktok"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path
-                    d="M16.7 12.2c0-2 1.7-3 1.8-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.6.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.7s1.8-1 2.5-2c.8-1.1 1.1-2.2 1.1-2.2-.1 0-2.9-1.1-2.9-3.2ZM14.8 6.2c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.7-1 1.7-.9 2.6.9.1 1.9-.5 2.5-1.2Z"
-                  />
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14.8 3c.4 2 1.6 3.6 3.6 4.3v3.1c-1.4 0-2.8-.4-4-1.2v5.4c0 3.3-2.6 5.7-5.8 5.7S3 17.9 3 14.8 5.6 9.2 8.7 9.2c.5 0 .9 0 1.3.1v3.2a3 3 0 0 0-1.3-.3c-1.4 0-2.6 1.1-2.6 2.6s1.1 2.6 2.6 2.6 2.6-1 2.6-3V3h3.5Z"></path>
                 </svg>
-
-                Apple Music
-              </span>
-
-              <span
-                class="platform platform--soundcloud is-disabled"
-                aria-disabled="true"
-              >
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path
-                    d="M6 16h13a3 3 0 0 0 0-6 4.8 4.8 0 0 0-8.9-1.8V16H6a3 3 0 0 1 0-6h1v6Z"
-                  />
-                </svg>
-
-                SoundCloud
-              </span>
-            </aside>
+                <span>TikTok</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
