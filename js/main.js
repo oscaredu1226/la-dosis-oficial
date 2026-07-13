@@ -113,6 +113,42 @@ window.addEventListener("scroll", updateHeader, {
 });
 
 /* ==================================================
+   CARRUSEL DE INTEGRANTES
+================================================== */
+
+const membersTrack = document.querySelector(
+  "[data-members-track]"
+);
+const membersPrev = document.querySelector(
+  "[data-members-prev]"
+);
+const membersNext = document.querySelector(
+  "[data-members-next]"
+);
+
+function scrollMembers(direction) {
+  if (!membersTrack) return;
+
+  const firstCard = membersTrack.querySelector(".member");
+  const cardWidth = firstCard
+    ? firstCard.getBoundingClientRect().width
+    : 180;
+  const gap = 22;
+
+  membersTrack.scrollBy({
+    left: direction * (cardWidth + gap) * 2,
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+  });
+}
+
+membersPrev?.addEventListener("click", () =>
+  scrollMembers(-1)
+);
+membersNext?.addEventListener("click", () =>
+  scrollMembers(1)
+);
+
+/* ==================================================
    NAVEGACIÓN ACTIVA Y ANIMACIONES
 ================================================== */
 

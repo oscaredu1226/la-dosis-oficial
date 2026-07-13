@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -312,56 +312,58 @@
 
           <div class="release__grid">
             <div class="release__cover tape reveal">
-              <img
-                src="assets/images/release-placeholder.svg"
-                alt="Portada temporal del último lanzamiento"
-                width="600"
-                height="600"
-                loading="lazy"
-              />
+              <a
+                class="release__cover-link"
+                href="https://open.spotify.com/intl-es/album/5kcvGdT6M9xSRTmZKOT0J6"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Escuchar RECUERDO@S en Spotify"
+              >
+                <img
+                  src="https://i.scdn.co/image/ab67616d0000e1a3ad5c5cfbf5a305f31ae00527"
+                  alt="Portada de RECUERDO@S de La Dosis"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                />
+              </a>
             </div>
 
             <div class="release__copy reveal">
-              <p class="eyebrow eyebrow--red">Nuevo single</p>
+              <p class="eyebrow eyebrow--red">Ultimo lanzamiento</p>
 
-              <h3>Nombre del tema</h3>
+              <h3>RECUERDO@S</h3>
 
               <p>
-                Descripción breve del sencillo, de qué trata y lo que
-                representa para la banda.
+                El lanzamiento mas reciente de La Dosis. Punk melodico con
+                memoria, ruido y corazon directo al pecho.
               </p>
 
               <div class="release__meta">
-                <span>▣ 10 mayo 2024</span>
-                <span>◷ 2:48</span>
+                <span>1 abril 2026</span>
+                <span>4:04</span>
               </div>
 
               <div class="release__actions">
                 <a
                   class="button button--primary"
-                  href="https://open.spotify.com/intl-es/artist/26XGOxgf1xzkmfcqjEoZNh"
+                  href="https://open.spotify.com/intl-es/album/5kcvGdT6M9xSRTmZKOT0J6"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
+                  <svg class="button__icon" aria-hidden="true" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M7.6 9.6c3.3-1 6.5-.7 9.4.8M8.2 12.4c2.6-.7 5-.5 7.4.7M8.8 15c1.9-.5 3.8-.3 5.6.5" />
+                  </svg>
                   Escuchar ahora
-                </a>
-
-                <a
-                  class="button button--outline"
-                  href="https://www.youtube.com/watch?v=WcDGYULXAgY"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ver videoclip
                 </a>
               </div>
             </div>
 
             <img
               class="punk-sticker reveal"
-              src="assets/images/sticker-calavera.svg"
-              alt=""
-              aria-hidden="true"
+              src="assets/images/ultimo_lanzamiento_img.png"
+              alt="Parche de La Dosis con calavera punk"
               loading="lazy"
             />
           </div>
@@ -385,14 +387,20 @@
               adornos ni mentiras. Energía, actitud y letras que incomodan.
               Ese es nuestro grito.
             </p>
-
-            <a class="button button--primary" href="#contacto">
-              Conoce más
-            </a>
           </div>
 
-          <div class="members" aria-label="Integrantes de La Dosis">
-            <article class="member polaroid reveal">
+          <div class="members-carousel reveal" aria-label="Carrusel de integrantes de La Dosis">
+            <button
+              class="carousel-button carousel-button--prev"
+              type="button"
+              aria-label="Ver integrantes anteriores"
+              data-members-prev
+            >
+              ‹
+            </button>
+
+            <div class="members" aria-label="Integrantes de La Dosis" data-members-track>
+              <article class="member polaroid reveal">
               <img
                 src="assets/images/integrante-01.jpg"
                 alt="Vocalista de La Dosis en vivo"
@@ -421,9 +429,9 @@
                   <circle cx="12" cy="12" r="4" />
                 </svg>
               </a>
-            </article>
+              </article>
 
-            <article class="member polaroid reveal">
+              <article class="member polaroid reveal">
               <img
                 src="assets/images/integrante-02.jpg"
                 alt="Guitarrista de La Dosis en vivo"
@@ -452,9 +460,9 @@
                   <circle cx="12" cy="12" r="4" />
                 </svg>
               </a>
-            </article>
+              </article>
 
-            <article class="member polaroid reveal">
+              <article class="member polaroid reveal">
               <img
                 src="assets/images/integrante-03.jpg"
                 alt="Bajista de La Dosis en vivo"
@@ -483,9 +491,9 @@
                   <circle cx="12" cy="12" r="4" />
                 </svg>
               </a>
-            </article>
+              </article>
 
-            <article class="member polaroid reveal">
+              <article class="member polaroid reveal">
               <img
                 src="assets/images/integrante-04.jpg"
                 alt="Baterista de La Dosis en vivo"
@@ -514,7 +522,17 @@
                   <circle cx="12" cy="12" r="4" />
                 </svg>
               </a>
-            </article>
+              </article>
+            </div>
+
+            <button
+              class="carousel-button carousel-button--next"
+              type="button"
+              aria-label="Ver más integrantes"
+              data-members-next
+            >
+              ›
+            </button>
           </div>
         </div>
       </section>
@@ -1001,3 +1019,4 @@
     </div>
   </body>
 </html>
+
