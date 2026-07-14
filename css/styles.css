@@ -1801,9 +1801,7 @@ h4,
 
 .tape::before,
 .polaroid::before,
-.video-frame::before,
-.social-card:nth-child(2)::after,
-.social-card:nth-child(4)::after {
+.video-frame::before {
   position: absolute;
   z-index: 4;
   width: 74px;
@@ -2577,14 +2575,74 @@ h4,
 ================================================== */
 
 .socials {
+  position: relative;
   padding: 46px 0 52px;
+  overflow: hidden;
+}
+
+.socials::before,
+.socials::after {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.socials::before {
+  left: 0;
+  right: 0;
+  top: 14px;
+  height: 3px;
+  background: rgb(238 233 223 / 66%);
+  clip-path: polygon(0 54%, 8% 12%, 18% 62%, 31% 18%, 43% 70%, 57% 20%, 70% 64%, 84% 16%, 100% 56%, 100% 100%, 0 100%);
+  filter: drop-shadow(0 2px 0 rgb(0 0 0 / 60%));
+}
+
+.socials::after {
+  inset: 14px 0 10px;
+  background:
+    radial-gradient(ellipse at 8% 72%, rgb(231 50 51 / 16%) 0 4%, transparent 16%),
+    radial-gradient(ellipse at 88% 40%, rgb(238 233 223 / 7%) 0 3%, transparent 17%),
+    radial-gradient(circle at 22% 40%, rgb(238 233 223 / 8%) 0 1px, transparent 2px),
+    radial-gradient(circle at 62% 74%, rgb(231 50 51 / 12%) 0 1px, transparent 2px),
+    url("../assets/textures/xerox-noise.svg") repeat;
+  background-size: 100% 100%, 100% 100%, 24px 25px, 31px 29px, 150px 150px;
+  opacity: 0.72;
+  mix-blend-mode: screen;
 }
 
 .socials__layout {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 30px;
+  grid-template-columns: minmax(190px, 0.32fr) minmax(0, 1fr);
+  gap: clamp(34px, 5vw, 72px);
   align-items: center;
+}
+
+.socials__layout::before,
+.socials__layout::after {
+  position: absolute;
+  z-index: 0;
+  color: var(--paper);
+  content: "✶";
+  font-family: var(--font-marker);
+  font-size: clamp(2rem, 3vw, 3.2rem);
+  line-height: 1;
+  text-shadow: 2px 2px 0 rgb(0 0 0 / 60%);
+  opacity: 0.9;
+}
+
+.socials__layout::before {
+  left: clamp(148px, 17vw, 220px);
+  top: 50%;
+  transform: translateY(-50%) rotate(-15deg);
+}
+
+.socials__layout::after {
+  right: -18px;
+  top: 45%;
+  transform: translateY(-50%) rotate(16deg);
 }
 
 .socials .section-title {
@@ -2592,24 +2650,36 @@ h4,
 }
 
 .social-grid {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 16px;
+  gap: clamp(16px, 2vw, 26px);
+  min-width: 0;
+}
+
+.socials .section-title {
+  position: relative;
+  z-index: 2;
 }
 
 .social-card {
-  min-height: 76px;
-  display: flex;
+  position: relative;
+  min-height: 98px;
+  display: grid;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 16px;
+  justify-items: center;
+  gap: 8px;
+  padding: 15px 18px 12px;
   color: var(--paper);
-  border: 2px solid rgb(238 233 223 / 58%);
+  border: 2px solid rgb(238 233 223 / 72%);
   font-family: var(--font-condensed);
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 800;
   text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgb(0 0 0 / 58%);
+  box-shadow: 4px 5px 0 rgb(0 0 0 / 42%);
   clip-path: polygon(
     2% 7%,
     97% 0,
@@ -2620,10 +2690,46 @@ h4,
   transition: transform var(--fast);
 }
 
-.social-card:nth-child(2)::after,
-.social-card:nth-child(4)::after {
-  top: -9px;
-  right: 17%;
+.social-card::before,
+.social-card::after {
+  position: absolute;
+  z-index: 2;
+  width: 38px;
+  height: 16px;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(90deg, rgb(211 190 148 / 84%), rgb(174 152 112 / 60%));
+  box-shadow: 0 1px 0 rgb(0 0 0 / 20%);
+  clip-path: polygon(3% 7%, 97% 0, 100% 84%, 91% 100%, 0 92%);
+}
+
+.social-card::before {
+  top: -8px;
+  left: 12px;
+  transform: rotate(-10deg);
+}
+
+.social-card::after {
+  right: 10px;
+  bottom: -7px;
+  transform: rotate(8deg);
+}
+
+.social-card:nth-child(even)::before {
+  left: auto;
+  right: 16px;
+  transform: rotate(9deg);
+}
+
+.social-card:nth-child(3)::after,
+.social-card:nth-child(5)::after {
+  display: none;
+}
+
+.social-card svg {
+  width: 38px;
+  height: 38px;
+  filter: drop-shadow(2px 2px 0 rgb(0 0 0 / 55%));
 }
 
 .social-card--instagram {
@@ -2701,10 +2807,52 @@ h4,
     normal;
 }
 
+@media (max-width: 1280px) {
+  .socials__layout {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .socials__layout::before {
+    left: 145px;
+    top: 44px;
+  }
+
+  .socials__layout::after {
+    right: 8px;
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(5, minmax(140px, 1fr));
+  }
+}
+
 .social-card--instagram svg * {
   fill: none;
   stroke: var(--paper);
   stroke-width: 2;
+}
+
+.social-card--youtube svg path:first-child {
+  fill: var(--paper);
+  stroke: none;
+}
+
+.social-card--youtube svg path:last-child {
+  fill: var(--red-dark);
+  stroke: none;
+}
+
+.social-card--spotify svg circle {
+  fill: #1db954;
+  stroke: none;
+}
+
+.social-card--spotify svg path {
+  fill: none;
+  stroke: var(--black);
+  stroke-width: 1.7;
+  stroke-linecap: round;
 }
 
 .social-card--tiktok svg path,
