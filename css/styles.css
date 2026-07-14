@@ -241,8 +241,7 @@ p {
 .band > .container,
 .videos > .container,
 .gallery > .container,
-.socials > .container,
-.contact > .container {
+.socials > .container {
   position: relative;
   z-index: 1;
   isolation: isolate;
@@ -251,8 +250,7 @@ p {
 .band > .container::before,
 .videos > .container::before,
 .gallery > .container::before,
-.socials > .container::before,
-.contact > .container::before {
+.socials > .container::before {
   position: absolute;
   inset: -34px -28px;
   z-index: -1;
@@ -290,8 +288,7 @@ p {
   background-position: 0 0, 0 0, 9px 19px, 22px 7px, 2px 25px, 18% 0, 0 0;
 }
 
-.socials > .container::before,
-.contact > .container::before {
+.socials > .container::before {
   background-position: 0 0, 0 0, 15px 11px, 8px 24px, 29px 4px, 78% 0, 0 0;
 }
 
@@ -327,8 +324,7 @@ p {
 .band::before,
 .videos::before,
 .gallery::before,
-.socials::before,
-.contact::before {
+.socials::before {
   position: absolute;
   top: -16px;
   left: 0;
@@ -1746,14 +1742,6 @@ h4,
   stroke: none;
 }
 
-.platform--apple svg path {
-  fill: var(--paper);
-}
-
-.platform--soundcloud svg path {
-  fill: #ff6a28;
-}
-
 .platform--tiktok svg path {
   fill: var(--paper);
   stroke: none;
@@ -1824,8 +1812,7 @@ h4,
 .tape,
 .polaroid,
 .social-card,
-.video-frame,
-.contact__photo {
+.video-frame {
   position: relative;
 }
 
@@ -2287,33 +2274,12 @@ h4,
   mix-blend-mode: screen;
 }
 
-.video-frame iframe,
-.video-poster {
+.video-frame iframe {
   width: 100%;
   height: 100%;
   border: 0;
 }
 
-.video-poster {
-  position: relative;
-  display: block;
-  padding: 0;
-  color: var(--paper);
-  background: #050505;
-  cursor: pointer;
-}
-
-.video-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 62%;
-  filter:
-    grayscale(0.65)
-    contrast(1.25);
-}
-
-.video-poster__play,
 .video-thumb span {
   position: absolute;
   top: 48%;
@@ -2326,7 +2292,6 @@ h4,
   transform: translate(-50%, -50%);
 }
 
-.video-poster__play::before,
 .video-thumb span::before {
   position: absolute;
   top: 16px;
@@ -2335,20 +2300,6 @@ h4,
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-left: 16px solid currentColor;
-}
-
-.video-poster__bar {
-  position: absolute;
-  right: 18px;
-  bottom: 15px;
-  left: 18px;
-  height: 4px;
-  background:
-    linear-gradient(
-      90deg,
-      var(--paper) 0 30%,
-      rgb(238 233 223 / 42%) 30%
-    );
 }
 
 .video-sidebar h3 {
@@ -2952,90 +2903,6 @@ h4,
 }
 
 /* ==================================================
-   CONTACTO SIN FORMULARIO
-================================================== */
-
-.contact {
-  padding: 54px 0 60px;
-}
-
-.contact__grid {
-  display: grid;
-  grid-template-columns:
-    minmax(260px, 0.8fr)
-    minmax(320px, 1.2fr);
-  gap: clamp(40px, 7vw, 100px);
-  align-items: center;
-}
-
-.contact__info {
-  max-width: 430px;
-}
-
-.contact__info ul {
-  display: grid;
-  gap: 14px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  font-size: 0.94rem;
-}
-
-.contact__info li {
-  display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
-  gap: 10px;
-  align-items: center;
-}
-
-.contact__info a {
-  transition: color var(--fast);
-}
-
-.contact__info a:hover,
-.contact__info a:focus-visible {
-  color: var(--red);
-}
-
-.contact__icon {
-  display: inline-grid;
-  width: 24px;
-  height: 24px;
-  place-items: center;
-  color: var(--red);
-  font-family: var(--font-condensed);
-  font-size: 1.15rem;
-}
-
-.contact__photo {
-  width: min(100%, 440px);
-  height: 260px;
-  justify-self: end;
-  object-fit: cover;
-  object-position: 50% 52%;
-  border: 7px solid var(--paper);
-  box-shadow: 6px 7px 0 rgb(0 0 0 / 34%);
-  filter:
-    contrast(1.12)
-    saturate(0.92);
-  transform: rotate(2deg);
-  clip-path: polygon(
-    2% 3%,
-    99% 0,
-    100% 92%,
-    94% 100%,
-    0 96%
-  );
-}
-
-.contact__photo.tape::before {
-  top: -13px;
-  bottom: auto;
-  left: 50%;
-  transform: translateX(-50%) rotate(4deg);
-}
-
-/* ==================================================
    FOOTER
 ================================================== */
 
@@ -3218,16 +3085,6 @@ h4,
     height: 142px;
   }
 
-  .contact__grid {
-    grid-template-columns:
-      minmax(240px, 0.8fr)
-      minmax(300px, 1.2fr);
-    gap: 42px;
-  }
-
-  .contact__photo {
-    width: min(100%, 390px);
-  }
 }
 
 /* ==================================================
@@ -3375,18 +3232,6 @@ h4,
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .contact__grid {
-    grid-template-columns:
-      minmax(220px, 0.8fr)
-      minmax(280px, 1.2fr);
-    gap: 34px;
-  }
-
-  .contact__photo {
-    width: min(100%, 340px);
-    height: 220px;
-  }
-
   .footer__inner {
     grid-template-columns:
       145px
@@ -3471,8 +3316,7 @@ h4,
   .band,
   .videos,
   .gallery,
-  .socials,
-  .contact {
+  .socials {
     padding-top: 52px;
     padding-bottom: 56px;
   }
@@ -3569,21 +3413,6 @@ h4,
     font-size: 1rem;
   }
 
-  .contact__grid {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .contact__info {
-    max-width: none;
-  }
-
-  .contact__photo {
-    width: min(100%, 360px);
-    height: 220px;
-    justify-self: center;
-  }
-
   .footer__inner {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -3656,10 +3485,6 @@ h4,
 
   .social-grid {
     grid-template-columns: 1fr;
-  }
-
-  .contact__photo {
-    height: 200px;
   }
 
   .lightbox {

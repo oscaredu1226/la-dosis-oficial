@@ -1,4 +1,4 @@
-document.documentElement.classList.add("js");
+﻿document.documentElement.classList.add("js");
 
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
@@ -66,7 +66,7 @@ if (!prefersReducedMotion) {
 }
 
 /* ==================================================
-   MENÚ MÓVIL
+   MENÃš MÃ“VIL
 ================================================== */
 
 function setMenuState(isOpen) {
@@ -81,7 +81,7 @@ function setMenuState(isOpen) {
 
   menuToggle.setAttribute(
     "aria-label",
-    isOpen ? "Cerrar menú" : "Abrir menú"
+    isOpen ? "Cerrar menÃº" : "Abrir menÃº"
   );
 
   body.classList.toggle("menu-open", isOpen);
@@ -110,7 +110,7 @@ window.addEventListener("resize", () => {
 });
 
 /* ==================================================
-   NAVEGACIÓN INTERNA
+   NAVEGACIÃ“N INTERNA
 ================================================== */
 
 document.addEventListener("click", (event) => {
@@ -194,7 +194,7 @@ membersNext?.addEventListener("click", () =>
 );
 
 /* ==================================================
-   NAVEGACIÓN ACTIVA Y ANIMACIONES
+   NAVEGACIÃ“N ACTIVA Y ANIMACIONES
 ================================================== */
 
 if ("IntersectionObserver" in window) {
@@ -259,7 +259,7 @@ if ("IntersectionObserver" in window) {
 }
 
 /* ==================================================
-   AÑO DEL FOOTER
+   AÃ‘O DEL FOOTER
 ================================================== */
 
 const yearElement = document.querySelector(
@@ -384,7 +384,7 @@ videoButtons.forEach((button) => {
 });
 
 /* ==================================================
-   GALERÍA
+   GALERÃA
 ================================================== */
 
 const galleryItems = [
@@ -607,149 +607,3 @@ document.addEventListener("keydown", (event) => {
     menuToggle?.focus();
   }
 });
-
-/* ==================================================
-   FORMULARIO
-================================================== */
-
-const contactForm = document.querySelector(
-  "[data-contact-form]"
-);
-
-const formStatus = document.querySelector(
-  "[data-form-status]"
-);
-
-function setError(field, message) {
-  const error = document.querySelector(
-    `#error-${field.id}`
-  );
-
-  field.setAttribute(
-    "aria-invalid",
-    message ? "true" : "false"
-  );
-
-  if (error) {
-    field.setAttribute(
-      "aria-describedby",
-      error.id
-    );
-
-    error.textContent = message;
-  }
-}
-
-function validateField(field) {
-  const value = field.value.trim();
-
-  if (!value) {
-    setError(
-      field,
-      "Este campo es obligatorio."
-    );
-
-    return false;
-  }
-
-  if (
-    field.type === "email" &&
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-  ) {
-    setError(
-      field,
-      "Ingresa un correo válido."
-    );
-
-    return false;
-  }
-
-  if (
-    field.name === "mensaje" &&
-    value.length < 10
-  ) {
-    setError(
-      field,
-      "Escribe un mensaje de al menos 10 caracteres."
-    );
-
-    return false;
-  }
-
-  setError(field, "");
-
-  return true;
-}
-
-if (contactForm) {
-  const fields = [
-    ...contactForm.querySelectorAll(
-      "input, select, textarea"
-    ),
-  ];
-
-  fields.forEach((field) => {
-    field.addEventListener("blur", () => {
-      validateField(field);
-    });
-
-    field.addEventListener("input", () => {
-      if (
-        field.getAttribute("aria-invalid") ===
-        "true"
-      ) {
-        validateField(field);
-      }
-    });
-  });
-
-  contactForm.addEventListener(
-    "submit",
-    (event) => {
-      event.preventDefault();
-
-      const validationResults = fields.map(
-        (field) => validateField(field)
-      );
-
-      const isValid =
-        validationResults.every(Boolean);
-
-      if (!isValid) {
-        if (formStatus) {
-          formStatus.textContent =
-            "Revisa los campos marcados antes de continuar.";
-        }
-
-        fields
-          .find(
-            (field) =>
-              field.getAttribute(
-                "aria-invalid"
-              ) === "true"
-          )
-          ?.focus();
-
-        return;
-      }
-
-      if (formStatus) {
-        formStatus.textContent =
-          "Mensaje preparado correctamente. " +
-          "Conecta este formulario a un servicio " +
-          "para enviarlo.";
-      }
-
-      contactForm.reset();
-
-      fields.forEach((field) => {
-        field.setAttribute(
-          "aria-invalid",
-          "false"
-        );
-
-        setError(field, "");
-      });
-    }
-  );
-}
