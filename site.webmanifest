@@ -2,12 +2,14 @@
   "name": "La Dosis",
   "short_name": "La Dosis",
   "description": "Sitio oficial de La Dosis, banda peruana de punk melódico.",
+  "id": "https://www.ladosispunk.com/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#070707",
   "theme_color": "#070707",
   "lang": "es-PE",
+  "categories": ["music", "entertainment"],
   "icons": [
     {
       "src": "assets/images/logo-la-dosis.png",

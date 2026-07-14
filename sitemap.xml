@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
   <url>
     <loc>https://www.ladosispunk.com/</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.ladosispunk.com/assets/images/hero-la-dosis.jpg</image:loc>
+      <image:title>La Dosis junto a su público en concierto</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.ladosispunk.com/assets/images/logo-la-dosis.png</image:loc>
+      <image:title>Logo oficial de La Dosis</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.ladosispunk.com/assets/images/galeria-01.jpg</image:loc>
+      <image:title>La Dosis en vivo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.ladosispunk.com/assets/images/galeria-02.jpg</image:loc>
+      <image:title>Público cantando junto a La Dosis</image:title>
+    </image:image>
   </url>
 </urlset>

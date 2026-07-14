@@ -10,10 +10,6 @@
       name="description"
       content="Sitio oficial de La Dosis, banda peruana de punk melódico. Escucha música, mira videos, revisa fotos en vivo y conecta con la banda."
     />
-    <meta
-      name="keywords"
-      content="La Dosis, La Dosis Perú, punk peruano, punk melódico, banda punk Lima, rock peruano, música punk, RECUERDO@S"
-    />
     <meta name="author" content="La Dosis" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="googlebot" content="index, follow, max-image-preview:large" />
@@ -25,6 +21,8 @@
     <meta name="color-scheme" content="dark light" />
 
     <link rel="canonical" href="https://www.ladosispunk.com/" />
+    <link rel="alternate" hreflang="es-PE" href="https://www.ladosispunk.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.ladosispunk.com/" />
 
     <meta property="og:locale" content="es_PE" />
     <meta property="og:site_name" content="La Dosis" />
@@ -37,11 +35,14 @@
     <meta property="og:url" content="https://www.ladosispunk.com/" />
     <meta property="og:image" content="https://www.ladosispunk.com/assets/images/hero-la-dosis.jpg" />
     <meta property="og:image:secure_url" content="https://www.ladosispunk.com/assets/images/hero-la-dosis.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content="La Dosis junto a su público en concierto" />
     <meta property="og:image:width" content="1600" />
     <meta property="og:image:height" content="992" />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" content="ladosispunk.com" />
+    <meta name="twitter:url" content="https://www.ladosispunk.com/" />
     <meta name="twitter:title" content="La Dosis | Punk melódico peruano" />
     <meta
       name="twitter:description"
@@ -67,43 +68,112 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "MusicGroup",
-        "name": "La Dosis",
-        "url": "https://www.ladosispunk.com/",
-        "image": "https://www.ladosispunk.com/assets/images/hero-la-dosis.jpg",
-        "logo": "https://www.ladosispunk.com/assets/images/logo-la-dosis.png",
-        "genre": ["Punk melódico", "Punk rock", "Rock peruano"],
-        "foundingLocation": {
-          "@type": "Place",
-          "name": "Lima, Perú"
-        },
-        "sameAs": [
-          "https://open.spotify.com/intl-es/artist/26XGOxgf1xzkmfcqjEoZNh",
-          "https://www.youtube.com/@LADOSISPERU",
-          "https://www.instagram.com/ladosis_oficial/",
-          "https://www.tiktok.com/@ladosispunk",
-          "https://www.facebook.com/ladosispunk"
-        ],
-        "album": {
-          "@type": "MusicAlbum",
-          "name": "RECUERDO@S",
-          "url": "https://open.spotify.com/intl-es/album/5kcvGdT6M9xSRTmZKOT0J6",
-          "datePublished": "2026-04-01",
-          "byArtist": {
-            "@type": "MusicGroup",
-            "name": "La Dosis"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.ladosispunk.com/#website",
+            "url": "https://www.ladosispunk.com/",
+            "name": "La Dosis",
+            "inLanguage": "es-PE",
+            "publisher": {
+              "@id": "https://www.ladosispunk.com/#band"
+            }
+          },
+          {
+            "@type": ["MusicGroup", "Organization"],
+            "@id": "https://www.ladosispunk.com/#band",
+            "name": "La Dosis",
+            "alternateName": "La Dosis Perú",
+            "url": "https://www.ladosispunk.com/",
+            "description": "Banda peruana de punk melódico formada en Lima.",
+            "foundingDate": "2020",
+            "foundingLocation": {
+              "@type": "Place",
+              "name": "Lima, Perú"
+            },
+            "genre": ["Punk melódico", "Punk rock", "Rock peruano"],
+            "image": {
+              "@type": "ImageObject",
+              "@id": "https://www.ladosispunk.com/#hero-image",
+              "url": "https://www.ladosispunk.com/assets/images/hero-la-dosis.jpg",
+              "width": 1600,
+              "height": 992
+            },
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.ladosispunk.com/#logo",
+              "url": "https://www.ladosispunk.com/assets/images/logo-la-dosis.png",
+              "width": 1170,
+              "height": 588
+            },
+            "sameAs": [
+              "https://open.spotify.com/intl-es/artist/26XGOxgf1xzkmfcqjEoZNh",
+              "https://www.youtube.com/@LADOSISPERU",
+              "https://www.instagram.com/ladosis_oficial/",
+              "https://www.tiktok.com/@ladosispunk",
+              "https://www.facebook.com/ladosispunk"
+            ],
+            "album": {
+              "@id": "https://www.ladosispunk.com/#recuerdos"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://www.ladosispunk.com/#webpage",
+            "url": "https://www.ladosispunk.com/",
+            "name": "La Dosis | Punk melódico peruano oficial",
+            "description": "Sitio oficial de La Dosis, banda peruana de punk melódico. Escucha música, mira videos, revisa fotos en vivo y conecta con la banda.",
+            "inLanguage": "es-PE",
+            "isPartOf": {
+              "@id": "https://www.ladosispunk.com/#website"
+            },
+            "about": {
+              "@id": "https://www.ladosispunk.com/#band"
+            },
+            "primaryImageOfPage": {
+              "@id": "https://www.ladosispunk.com/#hero-image"
+            }
+          },
+          {
+            "@type": "MusicAlbum",
+            "@id": "https://www.ladosispunk.com/#recuerdos",
+            "name": "RECUERDO@S",
+            "url": "https://open.spotify.com/intl-es/album/5kcvGdT6M9xSRTmZKOT0J6",
+            "image": "https://i.scdn.co/image/ab67616d0000e1a3ad5c5cfbf5a305f31ae00527",
+            "datePublished": "2026-04-01",
+            "byArtist": {
+              "@id": "https://www.ladosispunk.com/#band"
+            },
+            "track": {
+              "@id": "https://www.ladosispunk.com/#recuerdos-track"
+            }
+          },
+          {
+            "@type": "MusicRecording",
+            "@id": "https://www.ladosispunk.com/#recuerdos-track",
+            "name": "RECUERDO@S",
+            "duration": "PT4M4S",
+            "url": "https://open.spotify.com/intl-es/album/5kcvGdT6M9xSRTmZKOT0J6",
+            "byArtist": {
+              "@id": "https://www.ladosispunk.com/#band"
+            },
+            "inAlbum": {
+              "@id": "https://www.ladosispunk.com/#recuerdos"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.ladosispunk.com/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://www.ladosispunk.com/"
+              }
+            ]
           }
-        },
-        "track": {
-          "@type": "MusicRecording",
-          "name": "RECUERDO@S",
-          "duration": "PT4M4S",
-          "url": "https://open.spotify.com/intl-es/album/5kcvGdT6M9xSRTmZKOT0J6",
-          "byArtist": {
-            "@type": "MusicGroup",
-            "name": "La Dosis"
-          }
-        }
+        ]
       }
     </script>
 
@@ -244,7 +314,7 @@
           src="assets/images/hero-la-dosis.jpg"
           alt="La Dosis junto a su público después de un concierto"
           width="1600"
-          height="900"
+          height="992"
         />
 
         <div class="hero__shade" aria-hidden="true"></div>
@@ -317,7 +387,7 @@
               </p>
 
               <a
-                href="https://open.spotify.com/"
+                href="https://open.spotify.com/intl-es/artist/26XGOxgf1xzkmfcqjEoZNh"
                 class="platform platform--spotify"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -332,7 +402,7 @@
               </a>
 
               <a
-                href="https://www.youtube.com/"
+                href="https://www.youtube.com/@LADOSISPERU"
                 class="platform platform--youtube"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -345,7 +415,7 @@
               </a>
 
               <a
-                href="https://www.tiktok.com/"
+                href="https://www.tiktok.com/@ladosispunk"
                 class="platform platform--tiktok"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -430,6 +500,8 @@
               class="punk-sticker reveal"
               src="assets/images/ultimo_lanzamiento_img.png"
               alt="Parche de La Dosis con calavera punk"
+              width="999"
+              height="1170"
               loading="lazy"
             />
           </div>
