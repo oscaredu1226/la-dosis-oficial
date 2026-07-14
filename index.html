@@ -657,13 +657,19 @@
             <div class="section-title">
               <h2>Galería</h2>
             </div>
-
-            <a class="button button--primary" href="#galeria">
-              Ver galería completa
-            </a>
           </div>
 
-          <div class="gallery__grid" data-gallery>
+          <div class="gallery-carousel reveal" aria-label="Carrusel de fotos de La Dosis">
+            <button
+              class="gallery-control gallery-control--prev"
+              type="button"
+              aria-label="Ver fotos anteriores"
+              data-gallery-prev
+            >
+              ‹
+            </button>
+
+            <div class="gallery__grid" data-gallery data-gallery-track>
             <button
               class="gallery-item reveal"
               type="button"
@@ -752,6 +758,16 @@
                 height="200"
                 loading="lazy"
               />
+            </button>
+            </div>
+
+            <button
+              class="gallery-control gallery-control--next"
+              type="button"
+              aria-label="Ver más fotos"
+              data-gallery-next
+            >
+              ›
             </button>
           </div>
         </div>

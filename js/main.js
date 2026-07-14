@@ -346,6 +346,16 @@ const galleryItems = [
   ...document.querySelectorAll(".gallery-item"),
 ];
 
+const galleryTrack = document.querySelector(
+  "[data-gallery-track]"
+);
+const galleryPrev = document.querySelector(
+  "[data-gallery-prev]"
+);
+const galleryNext = document.querySelector(
+  "[data-gallery-next]"
+);
+
 const lightbox = document.querySelector(
   "[data-lightbox]"
 );
@@ -372,6 +382,77 @@ const lightboxNext = document.querySelector(
 
 let activeImageIndex = 0;
 let lastFocusedElement = null;
+let galleryAutoTimer = null;
+
+function scrollGallery(direction = 1) {
+  if (!galleryTrack) return;
+
+  const firstItem = galleryTrack.querySelector(".gallery-item");
+  const itemWidth = firstItem
+    ? firstItem.getBoundingClientRect().width
+    : 220;
+  const gap = 16;
+  const maxScroll =
+    galleryTrack.scrollWidth - galleryTrack.clientWidth;
+
+  if (
+    direction > 0 &&
+    galleryTrack.scrollLeft >= maxScroll - 4
+  ) {
+    galleryTrack.scrollTo({
+      left: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+    return;
+  }
+
+  if (direction < 0 && galleryTrack.scrollLeft <= 4) {
+    galleryTrack.scrollTo({
+      left: maxScroll,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+    return;
+  }
+
+  galleryTrack.scrollBy({
+    left: direction * (itemWidth + gap) * 2,
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+  });
+}
+
+function stopGalleryAuto() {
+  if (!galleryAutoTimer) return;
+  window.clearInterval(galleryAutoTimer);
+  galleryAutoTimer = null;
+}
+
+function startGalleryAuto() {
+  if (
+    prefersReducedMotion ||
+    !galleryTrack ||
+    galleryAutoTimer
+  ) {
+    return;
+  }
+
+  galleryAutoTimer = window.setInterval(() => {
+    scrollGallery(1);
+  }, 3600);
+}
+
+galleryPrev?.addEventListener("click", () => {
+  stopGalleryAuto();
+  scrollGallery(-1);
+});
+
+galleryNext?.addEventListener("click", () => {
+  stopGalleryAuto();
+  scrollGallery(1);
+});
+
+galleryTrack?.addEventListener("pointerdown", stopGalleryAuto);
+galleryTrack?.addEventListener("focusin", stopGalleryAuto);
+startGalleryAuto();
 
 function renderLightboxImage() {
   const item = galleryItems[activeImageIndex];
@@ -397,6 +478,7 @@ function renderLightboxImage() {
 function openLightbox(index) {
   if (!lightbox || !lightboxClose) return;
 
+  stopGalleryAuto();
   activeImageIndex = index;
   lastFocusedElement = document.activeElement;
 

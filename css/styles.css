@@ -2418,10 +2418,8 @@ h4,
 }
 
 .gallery__header {
-  display: flex;
+  display: block;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
   margin-bottom: 21px;
 }
 
@@ -2429,21 +2427,63 @@ h4,
   margin-bottom: 0;
 }
 
-.gallery__header .button {
-  min-height: 54px;
-  max-width: 170px;
-  text-align: center;
+.gallery-carousel {
+  position: relative;
+  padding: 10px 42px 18px;
+  isolation: isolate;
+}
+
+.gallery-carousel::before {
+  position: absolute;
+  inset: -14px 18px 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(ellipse at 12% 28%, rgb(231 50 51 / 14%) 0 3%, transparent 17%),
+    radial-gradient(circle at 72% 58%, rgb(241 238 232 / 9%) 0 1px, transparent 2px),
+    radial-gradient(circle at 34% 78%, rgb(231 50 51 / 12%) 0 1px, transparent 2px),
+    url("../assets/textures/xerox-noise.svg") repeat;
+  background-size:
+    100% 100%,
+    23px 25px,
+    31px 29px,
+    150px 150px;
+  opacity: 0.72;
+  mix-blend-mode: screen;
+  clip-path: polygon(1% 8%, 98% 0, 100% 80%, 91% 100%, 0 92%);
 }
 
 .gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 11px;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 14px 8px 18px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--red) rgb(238 233 223 / 20%);
+}
+
+.gallery__grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gallery__grid::-webkit-scrollbar-track {
+  background: rgb(238 233 223 / 16%);
+}
+
+.gallery__grid::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border: 2px solid var(--black);
 }
 
 .gallery-item {
   position: relative;
-  height: 104px;
+  flex: 0 0 clamp(190px, 18vw, 265px);
+  height: clamp(118px, 11vw, 160px);
+  scroll-snap-align: center;
   padding: 0;
   overflow: hidden;
   background: #050505;
@@ -2457,6 +2497,38 @@ h4,
     96% 100%,
     0 97%
   );
+}
+
+.gallery-control {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  width: 34px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  color: var(--paper);
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    var(--red-dark);
+  background-size: 80px 80px, auto;
+  border: 2px solid rgb(238 233 223 / 76%);
+  cursor: pointer;
+  font-family: var(--font-marker);
+  font-size: 2rem;
+  line-height: 1;
+  box-shadow: 3px 4px 0 rgb(0 0 0 / 42%);
+  transform: translateY(-50%) rotate(-2deg);
+  clip-path: polygon(6% 6%, 96% 0, 100% 88%, 88% 100%, 0 92%);
+}
+
+.gallery-control--prev {
+  left: 0;
+}
+
+.gallery-control--next {
+  right: 0;
+  transform: translateY(-50%) rotate(2deg);
 }
 
 .gallery-item:nth-child(odd) {
@@ -3051,10 +3123,6 @@ h4,
     max-width: 620px;
   }
 
-  .gallery__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .gallery-item {
     height: 126px;
   }
@@ -3241,20 +3309,16 @@ h4,
   }
 
   .gallery__header {
-    display: grid;
     align-items: start;
   }
 
-  .gallery__header .button {
-    max-width: 180px;
-  }
-
-  .gallery__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .gallery-carousel {
+    padding-inline: 34px;
   }
 
   .gallery-item {
-    height: 120px;
+    flex-basis: clamp(180px, 45vw, 250px);
+    height: 135px;
   }
 
   .social-grid {
@@ -3346,11 +3410,8 @@ h4,
     height: 105px;
   }
 
-  .gallery__grid {
-    grid-template-columns: 1fr;
-  }
-
   .gallery-item {
+    flex-basis: min(76vw, 280px);
     height: 170px;
   }
 
