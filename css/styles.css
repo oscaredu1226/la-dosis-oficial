@@ -2013,6 +2013,22 @@ h4,
   box-shadow: 3px 4px 0 rgb(0 0 0 / 42%);
   transform: translateY(-50%) rotate(-2deg);
   clip-path: polygon(6% 6%, 96% 0, 100% 88%, 88% 100%, 0 92%);
+  transition:
+    transform var(--fast),
+    background var(--fast),
+    border-color var(--fast),
+    box-shadow var(--fast);
+}
+
+.carousel-button:hover,
+.carousel-button:focus-visible {
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    var(--red);
+  background-size: 70px 70px, auto;
+  border-color: var(--paper);
+  box-shadow: 5px 6px 0 rgb(0 0 0 / 52%);
+  transform: translate(-1px, calc(-50% - 2px)) rotate(-5deg);
 }
 
 .carousel-button--prev {
@@ -2022,6 +2038,11 @@ h4,
 .carousel-button--next {
   right: 0;
   transform: translateY(-50%) rotate(2deg);
+}
+
+.carousel-button--next:hover,
+.carousel-button--next:focus-visible {
+  transform: translate(1px, calc(-50% - 2px)) rotate(5deg);
 }
 
 .polaroid {
@@ -2518,6 +2539,22 @@ h4,
   box-shadow: 3px 4px 0 rgb(0 0 0 / 42%);
   transform: translateY(-50%) rotate(-2deg);
   clip-path: polygon(6% 6%, 96% 0, 100% 88%, 88% 100%, 0 92%);
+  transition:
+    transform var(--fast),
+    background var(--fast),
+    border-color var(--fast),
+    box-shadow var(--fast);
+}
+
+.gallery-control:hover,
+.gallery-control:focus-visible {
+  background:
+    url("../assets/textures/xerox-noise.svg") repeat,
+    var(--red);
+  background-size: 80px 80px, auto;
+  border-color: var(--paper);
+  box-shadow: 5px 6px 0 rgb(0 0 0 / 52%);
+  transform: translate(-1px, calc(-50% - 2px)) rotate(-5deg);
 }
 
 .gallery-control--prev {
@@ -2527,6 +2564,11 @@ h4,
 .gallery-control--next {
   right: 0;
   transform: translateY(-50%) rotate(2deg);
+}
+
+.gallery-control--next:hover,
+.gallery-control--next:focus-visible {
+  transform: translate(1px, calc(-50% - 2px)) rotate(5deg);
 }
 
 .gallery-item:nth-child(odd) {
@@ -2687,7 +2729,26 @@ h4,
     94% 100%,
     0 92%
   );
-  transition: transform var(--fast);
+  transition:
+    transform var(--fast),
+    border-color var(--fast),
+    box-shadow var(--fast),
+    filter var(--fast);
+}
+
+.social-card:hover,
+.social-card:focus-visible {
+  border-color: var(--paper);
+  box-shadow:
+    6px 7px 0 rgb(0 0 0 / 54%),
+    inset 0 0 0 999px rgb(255 255 255 / 4%);
+  filter: contrast(1.08) saturate(1.08);
+  transform: translate(-2px, -3px) rotate(-1.2deg);
+}
+
+.social-card:nth-child(even):hover,
+.social-card:nth-child(even):focus-visible {
+  transform: translate(2px, -3px) rotate(1.2deg);
 }
 
 .social-card::before,
