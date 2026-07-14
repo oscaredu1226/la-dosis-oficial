@@ -21,6 +21,51 @@ const sections = [
 ];
 
 /* ==================================================
+   TEXTURA SUTIL AL HACER SCROLL
+================================================== */
+
+let scrollTextureFrame = 0;
+let scrollTextureTimer = 0;
+
+function updateScrollTexture() {
+  scrollTextureFrame = 0;
+
+  const drift = Math.round(window.scrollY % 37);
+  const driftSoft = Math.round(window.scrollY % 23);
+
+  document.documentElement.style.setProperty(
+    "--scroll-drift",
+    String(drift)
+  );
+
+  document.documentElement.style.setProperty(
+    "--scroll-drift-soft",
+    String(driftSoft)
+  );
+
+  body.classList.add("is-scrolling");
+
+  window.clearTimeout(scrollTextureTimer);
+  scrollTextureTimer = window.setTimeout(() => {
+    body.classList.remove("is-scrolling");
+  }, 160);
+}
+
+if (!prefersReducedMotion) {
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (scrollTextureFrame) return;
+
+      scrollTextureFrame = window.requestAnimationFrame(
+        updateScrollTexture
+      );
+    },
+    { passive: true }
+  );
+}
+
+/* ==================================================
    MENÚ MÓVIL
 ================================================== */
 
